@@ -52,7 +52,7 @@ function getFormDate() {
 
 function getPreviousBill(date, ignoreId = null) {
   return bills
-    .filter(b => b.id !== ignoreId && b.bill_month < date)
+    .filter(b => b.monthly_bills !== ignoreId && b.bill_month < date)
     .sort((a, b) => b.bill_month.localeCompare(a.bill_month))[0] || null;
 }
 
@@ -163,7 +163,7 @@ form.addEventListener("submit", async function(e) {
     bank_balance: closing
   };
 
-  const duplicate = bills.find(b => b.bill_month === date && b.id !== editingId);
+  const duplicate = bills.find(b => b.bill_month === date && b.monthly_bills !== editingId);
   if (duplicate) {
     message.textContent = "A bill for this month already exists. Use Edit instead.";
     return;
@@ -174,7 +174,7 @@ form.addEventListener("submit", async function(e) {
     result = await supabaseClient
       .from("monthly_bills")
       .update(record)
-      .eq("id", editingId);
+      .eq("monthly_bills", editingId);
   } else {
     result = await supabaseClient
       .from("monthly_bills")
