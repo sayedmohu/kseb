@@ -240,11 +240,11 @@ thead .sticky {
 /* Subtle highlight for the current bank balance */
 .summary-card {
   background: #f1f7f3;
-  border-color: #d5e6da;
+  border-color: #fff8e7;
 }
 
 .summary-value {
-  color: #2f6b45;
+  color: #46a067;
 }
 
 /* Keep the compact table headings narrow */
