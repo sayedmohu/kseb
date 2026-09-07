@@ -170,16 +170,66 @@ form.addEventListener("submit", async function(e) {
   }
 
   let result;
-  if (editingId) {
-    result = await supabaseClient
-      .from("monthly_bills")
-      .update(record)
-      .eq("monthly_bills", editingId);
-  } else {
-    result = await supabaseClient
-      .from("monthly_bills")
-      .insert(record);
+
+if (editingId) {
+  const oldBill = bills.find(
+    b => String(b.monthly_bills) === String(editingId)
+  );
+
+  const oldClosing = oldBill ? Number(oldBill.bank_balance) : 0;
+
+  // Update the bill being edited
+  result = await supabaseClient
+    .from("monthly_bills")
+    .update(record)
+    .eq("monthly_bills", editingId);
+
+  if (!result.error) {
+    // Difference between old and new bank closing
+    const bankDifference = Number(record.bank_balance) - oldClosing;
+
+    if (bankDifference !== 0) {
+      // Find all bills after the edited month
+      const laterBills = bills
+        .filter(b => b.bill_month > date)
+        .sort((a, b) => a.bill_month.localeCompare(b.bill_month));
+
+      let previousClosing = Number(record.bank_balance);
+
+      for (const laterBill of laterBills) {
+        const oldOpening = Number(laterBill.bank_opening);
+        const oldLaterClosing = Number(laterBill.bank_balance);
+
+        // Preserve that month's bank addition/usage
+        const bankChange = oldLaterClosing - oldOpening;
+
+        const newOpening = previousClosing;
+        const newClosing = newOpening + bankChange;
+
+        const updateResult = await supabaseClient
+          .from("monthly_bills")
+          .update({
+            bank_opening: newOpening,
+            bank_balance: newClosing
+          })
+          .eq("monthly_bills", laterBill.monthly_bills);
+
+        if (updateResult.error) {
+          console.error(updateResult.error);
+          message.textContent =
+            "Bill saved, but a later month's bank balance could not be updated.";
+          return;
+        }
+
+        previousClosing = newClosing;
+      }
+    }
   }
+} else {
+  result = await supabaseClient
+    .from("monthly_bills")
+    .insert(record);
+}
 
   if (result.error) {
     console.error(result.error);
