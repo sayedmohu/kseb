@@ -240,7 +240,7 @@ thead .sticky {
 /* Subtle highlight for the current bank balance */
 .summary-card {
   background: #fff8e7;
-  border-color: #fff8e7;
+  border-color: #46a067;
 }
 
 .summary-value {
