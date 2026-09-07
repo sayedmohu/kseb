@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KSEB Solar Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>KSEB Solar Bill Tracker</h1>
+    <button id="manageBtn" class="primary">Manage / Add Bill</button>
+  </header>
+
+  <main class="container">
+    <section class="summary-card">
+      <div class="summary-label">Current Solar Bank Balance</div>
+      <div id="currentBankBalance" class="summary-value">—</div>
+      <div class="summary-unit">kWh</div>
+    </section>
+
+    <section class="toolbar">
+      <label>
+        Year
+        <select id="yearFilter"></select>
+      </label>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="sticky c1">Month</th>
+            <th class="sticky c2">Usage</th>
+            <th class="sticky c3">Bill<br>Amount</th>
+            <th>Solar<br>Generation</th>
+            <th>Solar<br>Used</th>
+            <th>Solar<br>Exported</th>
+            <th>KSEB<br>Import</th>
+            <th>Bank<br>Balance</th>
+            <th>Bill<br>Number</th>
+          </tr>
+        </thead>
+        <tbody id="billTableBody"></tbody>
+      </table>
+    </div>
+  </main>
+
+
+  <div id="loginModal" class="modal-backdrop" hidden>
+    <div class="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button id="closeLoginBtn" class="modal-close" type="button" aria-label="Close">×</button>
+      <h2 id="loginTitle">Manage / Add Bill</h2>
+      <p class="login-subtitle">Sign in to manage your KSEB bills.</p>
+      <form id="loginForm">
+        <label>Email address
+          <input id="loginEmail" type="email" autocomplete="username" required>
+        </label>
+        <label>Password
+          <input id="loginPassword" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="primary login-submit">Sign In</button>
+        <p id="loginMessage" class="login-message"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app-v4.js"></script>
+</body>
+</html>

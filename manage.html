@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Bills - KSEB Solar Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Manage / Add Bill</h1>
+    <div class="top-actions">
+      <button id="dashboardBtn">Dashboard</button>
+      <button id="logoutBtn">Sign Out</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="form-card">
+      <h2>Bill Details</h2>
+
+      <form id="billForm">
+        <div class="form-grid">
+          <label>Month
+            <select id="billMonth" required>
+              <option value="">Select month</option>
+              <option value="01">January</option><option value="02">February</option>
+              <option value="03">March</option><option value="04">April</option>
+              <option value="05">May</option><option value="06">June</option>
+              <option value="07">July</option><option value="08">August</option>
+              <option value="09">September</option><option value="10">October</option>
+              <option value="11">November</option><option value="12">December</option>
+            </select>
+          </label>
+
+          <label>Year
+            <input id="billYear" type="number" min="2000" max="2100" required>
+          </label>
+
+          <label>Bill Number
+            <input id="billNumber" type="text" required>
+          </label>
+
+          <label>Bill Amount (₹)
+            <input id="billAmount" type="number" min="0" step="1" required>
+          </label>
+
+          <label>Solar Generation (kWh)
+            <input id="solarGeneration" type="number" min="0" step="1" required>
+            <small class="field-help">(Regulator Reading Point - WNL - Units) Page 2</small>
+          </label>
+
+          <label>Solar Exported (kWh)
+            <input id="solarExported" type="number" min="0" step="1" required>
+            <small class="field-help">(Units Exported) page 3</small>
+          </label>
+
+          <label>KSEB Import (kWh)
+            <input id="ksebImport" type="number" min="0" step="1" required>
+            <small class="field-help">(Units Imported) page 3</small>
+          </label>
+
+          <label>Bank Opening (kWh)
+            <input id="bankOpeningInput" type="number" min="0" step="1" required>
+            <small class="field-help">Auto-filled from previous month's Bank Closing — you can change it if needed</small>
+          </label>
+
+          <label>Bank Closing (kWh)
+            <input id="bankBalance" type="number" min="0" step="1" required>
+          <small class="field-help">(Bank Closing) Page 3</small></label>
+        </div>
+
+        <div class="calculation-box">
+          <p>Solar Used: <strong id="solarUsed">0</strong> kWh</p>
+          <p>Total Usage: <strong id="totalUsage">0</strong> kWh</p>
+          <p>Bank Opening: <strong id="bankOpening">0</strong> kWh</p>
+          <p>Bank Added / Used: <strong id="bankChange">0</strong> kWh</p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="primary">Save Bill</button>
+          <button type="button" id="clearBtn">Clear</button>
+        </div>
+        <p id="message"></p>
+      </form>
+    </section>
+
+    <section class="form-card">
+      <h2>Existing Bills</h2>
+      <div id="existingBills"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="manage-v4.js"></script>
+</body>
+</html>

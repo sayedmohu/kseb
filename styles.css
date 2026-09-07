@@ -1,0 +1,348 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #17202a;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+button {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 9px 13px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #1769aa;
+  color: white;
+  border-color: #1769aa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.summary-card {
+  display: inline-block;
+  min-width: 230px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.summary-value {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.summary-unit {
+  display: inline-block;
+  margin-left: 5px;
+  color: #666;
+}
+
+.toolbar {
+  margin-bottom: 12px;
+}
+
+.toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+select, input {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+}
+
+.toolbar select {
+  width: 130px;
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: 70vh;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th, td {
+  padding: 11px 12px;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+  text-align: left;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  background: #eef2f6;
+  font-weight: bold;
+}
+
+.sticky {
+  position: sticky;
+  z-index: 5;
+  background: white;
+}
+
+thead .sticky {
+  z-index: 10;
+  background: #eef2f6;
+}
+
+.c1 { left: 0; min-width: 105px; }
+.c2 { left: 105px; min-width: 85px; }
+.c3 { left: 190px; min-width: 120px; }
+
+.form-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.form-card h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.calculation-box {
+  margin-top: 18px;
+  padding: 12px;
+  background: #f5f7fa;
+  border-radius: 8px;
+}
+
+.calculation-box p {
+  margin: 7px 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+#message {
+  margin-bottom: 0;
+  color: #555;
+}
+
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.bill-row:last-child {
+  border-bottom: 0;
+}
+
+.bill-row span {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .topbar h1 {
+    font-size: 17px;
+  }
+
+  .topbar button {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrap {
+    max-height: 65vh;
+  }
+}
+
+
+/* Subtle highlight for the current bank balance */
+.summary-card {
+  background: #f1f7f3;
+  border-color: #d5e6da;
+}
+
+.summary-value {
+  color: #2f6b45;
+}
+
+/* Keep the compact table headings narrow */
+table th {
+  line-height: 1.15;
+}
+
+
+/* Center all table headings and values */
+table th,
+table td {
+  text-align: center;
+}
+
+/* Keep the sticky columns centered as well */
+.c1, .c2, .c3 {
+  text-align: center;
+}
+
+
+.field-help {
+  display: block;
+  margin-top: 2px;
+  color: #a35d5d;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-backdrop[hidden] {
+  display: none;
+}
+
+.login-modal {
+  position: relative;
+  width: min(100%, 390px);
+  padding: 22px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.login-modal h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
+
+.login-subtitle {
+  margin: 0 0 18px;
+  color: #666;
+  font-size: 14px;
+}
+
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.login-modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  font-size: 25px;
+  line-height: 1;
+  padding: 5px 8px;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 3px;
+}
+
+.login-message {
+  min-height: 18px;
+  margin: 0;
+  color: #a35d5d;
+  font-size: 13px;
+}
+.c2 {
+  font-weight: 700;
+}
