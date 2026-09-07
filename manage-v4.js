@@ -115,7 +115,7 @@ function formatMonth(dateString) {
 }
 
 window.editBill = function(id) {
-  const b = bills.find(x => x.monthly_bills === id);
+  const b = bills.find(x => String(x.monthly_bills) === String(id));
   if (!b) return;
 
   editingId = id;
