@@ -164,7 +164,7 @@ form.addEventListener("submit", async function(e) {
   };
 
   const duplicate = bills.find(b => b.bill_month === date && String(b.monthly_bills) !== String(editingId));
-  if (duplicate) {
+  if (!editingId && duplicate) {
     message.textContent = "A bill for this month already exists. Use Edit instead.";
     return;
   }
