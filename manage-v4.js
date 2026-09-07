@@ -102,7 +102,7 @@ function renderExistingBills() {
         <strong>${formatMonth(b.bill_month)}</strong>
         <span>Bill ${b.bill_number} · ₹${Number(b.bill_amount).toLocaleString("en-IN")}</span>
       </div>
-      <button onclick="editBill('${b.id}')">Edit</button>
+      <button onclick="editBill('${b.monthly_bills}')">Edit</button>
     </div>
   `).join("");
 }
