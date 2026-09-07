@@ -64,7 +64,7 @@ button.primary {
   display: inline-block;
   margin-top: 5px;
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .summary-unit {
