@@ -188,6 +188,7 @@ form.addEventListener("submit", async function(e) {
   }
 
   message.textContent = "Bill saved successfully.";
+  alert("Bill saved successfully!");
   await loadBills();
   clearForm();
 });
