@@ -64,7 +64,7 @@ button.primary {
   display: inline-block;
   margin-top: 5px;
   font-size: 30px;
-  font-weight: 800;
+  font-weight: bold;
 }
 
 .summary-unit {
@@ -345,4 +345,10 @@ table td {
 }
 .c2 {
   font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .summary-value {
+    font-weight: 900;
+  }
 }
