@@ -50,8 +50,8 @@ function renderTable() {
     return `
       <tr>
         <td class="sticky c1">${formatMonth(b.bill_month)}</td>
-        <td class="sticky c2">${usage}</td>
-        <td class="sticky c3">₹${Number(b.bill_amount).toLocaleString("en-IN")}</td>
+        <td class="c2">${usage}</td>
+        <td class="c3">₹${Number(b.bill_amount).toLocaleString("en-IN")}</td>
         <td>${b.solar_generation}</td>
         <td>${solarUsed}</td>
         <td>${b.solar_exported}</td>
