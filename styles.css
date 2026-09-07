@@ -138,8 +138,8 @@ thead .sticky {
 }
 
 .c1 { left: 0; min-width: 95px; }
-.c2 { left: 105px; min-width: 85px; }
-.c3 { left: 190px; min-width: 120px; }
+.c2 { min-width: 85px; }
+.c3 { min-width: 120px; }
 
 .form-card {
   background: white;
