@@ -1,11 +1,4 @@
-// Supabase configuration.
-// Replace ONLY these two values with your Supabase Project URL and Publishable key.
-// Never put your Supabase Secret key here.
+// Google Apps Script configuration
 
-const SUPABASE_URL = "https://xbtvfzmnpsocwaecuohp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_L4ude82Mrj8IywEGJzs0Mw_t_vq6xUH";
-
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwzMgRI3Qi9FNshDKZ4FuoI6ZyV4VRt_8hpU70xfak0d9Sw2ud7n1HZzRnGiKHJlyTfbw/exec";
