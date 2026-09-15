@@ -209,6 +209,12 @@ thead .sticky {
   font-size: 13px;
 }
 
+.bill-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 700px) {
   .topbar {
     align-items: flex-start;
