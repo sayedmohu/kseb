@@ -567,13 +567,15 @@ function renderExistingBills() {
 
             </div>
 
-            <button onclick="editBill(${bill._row})">
-  Edit
-</button>
+           <div class="bill-actions">
+  <button onclick="editBill(${bill._row})">
+    Edit
+  </button>
 
-<button onclick="deleteBill(${bill._row})">
-  Delete
-</button>
+  <button onclick="deleteBill(${bill._row})">
+    Delete
+  </button>
+</div>
 
           </div>
         `;
