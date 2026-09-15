@@ -898,14 +898,15 @@ form.addEventListener(
          CHECK RESULT
          ================================================= */
 
-      if (!result.success) {
+     if (!result.success) {
 
-        message.textContent =
-          result.message ||
-          "Save failed.";
+  alert(
+    result.message ||
+    "Save failed."
+  );
 
-        return;
-      }
+  return;
+}
 
 
       message.textContent =
