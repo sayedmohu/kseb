@@ -692,7 +692,67 @@ window.editBill =
     });
   };
 
+/* =========================================================
+   DELETE BILL
+   ========================================================= */
 
+async function deleteBill(row) {
+
+  const bill = bills.find(
+    item => Number(item._row) === Number(row)
+  );
+
+  if (!bill) {
+    alert("Bill not found.");
+    return;
+  }
+
+  const month = formatMonth(bill.bill_month);
+  const billNumber = bill.bill_number || "No bill number";
+
+  const confirmed = confirm(
+    `Delete ${month}?\n\nBill: ${billNumber}\n\nThis cannot be undone.`
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+
+    const token = getToken();
+
+    if (!token) {
+      alert("Please log in again.");
+      return;
+    }
+
+    const result = await apiRequest({
+      action: "delete",
+      row: Number(row),
+      token: token
+    });
+
+    if (!result.success) {
+      throw new Error(
+        result.message || "Delete failed."
+      );
+    }
+
+    alert("Bill deleted successfully.");
+
+    await loadBills();
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      error.message ||
+      "Unable to delete the bill."
+    );
+  }
+}
 /* =========================================================
    SAVE BILL
    ========================================================= */
