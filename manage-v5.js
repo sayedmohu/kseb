@@ -897,8 +897,9 @@ form.addEventListener(
       /* =================================================
          CHECK RESULT
          ================================================= */
+if (!result.success) {
 
-     if (!result.success) {
+  message.textContent = "";
 
   alert(
     result.message ||
